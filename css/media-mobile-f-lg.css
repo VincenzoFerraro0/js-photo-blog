@@ -1,5 +1,5 @@
 @media screen and (min-width: 1024px){
     .recipe-card {
-        flex-basis: calc(100% / 3 - 10px );
+        flex-basis: calc(100% / 3 - 20px );
     }
 }

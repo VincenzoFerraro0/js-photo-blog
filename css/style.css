@@ -1,8 +1,25 @@
 /* Header */
 header {
     background-image: url(../img/wall.png);
-    height: 20vh;
+    height: 10vh;
 }
+
+.title {
+    font-family: Edu Tas Beginner, sans-serif;
+
+}
+header .title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    animation-name: slideInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+
+
+}
+
 
 /* Main */
 main {
@@ -12,16 +29,17 @@ main {
 
 /* Contenitore principale */
 .container {
-    width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Layout a griglia */
 .row {
+    margin-block: 3em;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
 }
 
 /* Card */
@@ -30,6 +48,11 @@ main {
     background-color: white;
     position: relative;
     flex-basis: 100%;
+}
+
+.recipe-card:hover{
+    transform: rotate(40deg) translate(-20%) ;
+
 }
 
 /* Pin sopra la card */
@@ -44,4 +67,27 @@ main {
 .col {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+span.title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgb(165, 165, 165);
+}
+
+
+.data {
+    font-family: Sometype Mono,monospace;
+    color: rgb(165, 165, 165);
+}
+
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-1400px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
