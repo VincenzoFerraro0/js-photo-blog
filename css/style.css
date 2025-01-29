@@ -1,39 +1,47 @@
-
+/* Header */
 header {
     background-image: url(../img/wall.png);
     height: 20vh;
 }
+
+/* Main */
 main {
     background-image: url(../img/cork.png);
-    min-height: 100vh;  /* Occupa almeno tutto lo schermo*/
-    
+    min-height: 100vh;
 }
 
+/* Contenitore principale */
 .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    
 }
+
+/* Layout a griglia */
 .row {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
+
+/* Card */
 .recipe-card {
     padding: 15px;
     background-color: white;
     position: relative;
     flex-basis: 100%;
 }
+
+/* Pin sopra la card */
 .pin {
-    position: absolute;  
+    position: absolute;
     top: -15px;
     left: 50%;
     transform: translate(-50%);
-
 }
-.col{
+
+/* Colonna */
+.col {
     display: flex;
     flex-direction: column;
 }
