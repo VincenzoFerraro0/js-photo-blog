@@ -1,0 +1,42 @@
+
+header {
+    background-image: url(../img/wall.png);
+    height: 20vh;
+}
+main {
+    background-image: url(../img/cork.png);
+    min-height: 100vh;  /* Occupa almeno tutto lo schermo*/
+    
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.recipe-card {
+    padding: 15px;
+    background-color: white;
+    position: relative;
+    flex-basis: 100%;
+}
+.pin {
+    position: absolute;  
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+.card img {
+    width: 100%;
+}
