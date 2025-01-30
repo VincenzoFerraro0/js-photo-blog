@@ -55,10 +55,10 @@ main {
 }
 
 .cards:hover {
-    transform: rotate(6deg) translate(-5%);
-    scale: 1.1;
-
-
+    cursor: pointer;
+    transform: rotate(10deg) translate(-5%);
+    scale: 1.1 ;
+    box-shadow: 10px 5px 5px black;
 }
 
 
@@ -92,7 +92,7 @@ span.title {
 }
 
 
-/* Animazione */
+/* Animazione titolo */
 
 @keyframes slideInLeft {
     from {
@@ -103,24 +103,20 @@ span.title {
         transform: translateX(0);
     }
 }
-/* OVERLAY */
 
-div.overlay {
+/* OVERLAY */
+.overlay {
     display: none;
-}
-.overlay{
     position: fixed;
     z-index: 999;
     top: 0;
-    bottom: 0; 
+    bottom: 0;
     left: 0;
     right: 0;
 
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8)
-
-
 }
 
 
@@ -128,3 +124,85 @@ div.overlay {
     width: 300px
 }
 
+
+.btn-buble {
+    position: relative;
+    padding: 10px 22px;
+    background-color: #EBA55D;
+    border-radius: 6px;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-buble:active {
+    transform: scale(0.96);
+}
+
+/* Animazione btn-close */
+.btn-buble::before,
+.btn-buble::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 150%;
+    z-index: -1;
+    background-repeat: no-repeat;
+}
+
+.btn-buble::before {
+    top: -70%;
+    background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, #EBA55D 20%, transparent 30%),
+        radial-gradient(circle, #EBA55D 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #EBA55D 15%, transparent 20%),
+        radial-gradient(circle, #EBA55D 20%, transparent 20%),
+        radial-gradient(circle, #EBA55D 20%, transparent 20%),
+        radial-gradient(circle, #EBA55D 20%, transparent 20%),
+        radial-gradient(circle, #EBA55D 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 18% 18%;
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 20% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    animation: topBubbles 0.6s ease-in-out infinite;
+}
+
+@keyframes topBubbles {
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        
+    }
+}
+
+.btn-buble::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #EBA55D 15%, transparent 20%),
+    radial-gradient(circle, #EBA55D 20%, transparent 20%),
+    radial-gradient(circle, #EBA55D 20%, transparent 20%),
+    radial-gradient(circle, #EBA55D 20%, transparent 20%),
+    radial-gradient(circle, #EBA55D 20%, transparent 20%),
+    radial-gradient(circle, #EBA55D 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0%, 85% 0%, 70% 0%, 70% 0%;
+    animation: bottomBubbles 0.6s ease-in-out infinite;
+}
+@keyframes bottomBubbles {
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100%{
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+
+
+    }
+}
