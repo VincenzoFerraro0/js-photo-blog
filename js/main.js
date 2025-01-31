@@ -40,17 +40,17 @@ fetch(endpoint, methodFetch)
 
         console.log(arrayCards) // Stampa l'array delle card per il debug
 
-        let overlay = document.querySelector('.overlay') // Seleziona l'elemento overlay
+        let modale = document.querySelector('.modale') // Seleziona l'elemento overlay
 
         // Aggiunge un evento di click a ciascuna card
         arrayCards.forEach(element => {
             element.addEventListener('click', function () {
                 let dataImg = this.getAttribute('data-img') // Ottiene l'attributo data-img
 
-                overlay.style.display = 'flex' // Mostra l'overlay
-                overlay.innerHTML =
+                modale.style.display = 'flex' // Mostra l'overlay
+                modale.innerHTML =
                 `
-                    <button id="btn-close" class="btn-buble">Chiudi</button>
+                    <button id="btn-close" class="btn-bubble">Chiudi</button>
                     <figure>
                         <img src="https://marcolanci.it/boolean/assets/pictures/${dataImg}.png" alt="">
                     </figure>
@@ -59,7 +59,7 @@ fetch(endpoint, methodFetch)
                 // Aggiunge un evento per chiudere la modale con il bottone
                 let btnClose = document.querySelector('#btn-close')
                 btnClose.addEventListener('click', function () {
-                    overlay.style.display = "none";
+                    modale.style.display = "none";
                 });
 
                 
@@ -71,8 +71,8 @@ fetch(endpoint, methodFetch)
 
         // Chiude la modale cliccando fuori dalla modale stessa
         window.onclick = function (event) {
-            if (event.target == overlay) {
-                overlay.style.display = "none";
+            if (event.target == modale) {
+                modale.style.display = "none";
             }
         }
     })

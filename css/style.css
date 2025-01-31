@@ -60,7 +60,9 @@ main {
     scale: 1.1 ;
     box-shadow: 10px 5px 5px black;
 }
-
+.cards:hover span.title {
+    color: black;
+}
 
 
 /* Pin sopra la card */
@@ -86,6 +88,7 @@ span.title {
 
 
 
+
 .data {
     font-family: 'Sometype Mono', monospace;
     color: rgb(165, 165, 165);
@@ -105,7 +108,8 @@ span.title {
 }
 
 /* OVERLAY */
-.overlay {
+.modale {
+
     display: none;
     position: fixed;
     z-index: 999;
@@ -120,12 +124,16 @@ span.title {
 }
 
 
-.overlay img {
-    width: 300px
+.modale img {
+    padding: 10px;
+    background-color: #fff;
+    width: 450px;
+    border-radius: 40px;
+
 }
 
 
-.btn-buble {
+.btn-bubble {
     position: relative;
     padding: 10px 22px;
     background-color: #EBA55D;
@@ -138,13 +146,13 @@ span.title {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn-buble:active {
+.btn-bubble:active {
     transform: scale(0.96);
 }
 
 /* Animazione btn-close */
-.btn-buble::before,
-.btn-buble::after {
+.btn-bubble::before,
+.btn-bubble::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -155,7 +163,7 @@ span.title {
     background-repeat: no-repeat;
 }
 
-.btn-buble::before {
+.btn-bubble::before {
     top: -70%;
     background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
         radial-gradient(circle, transparent 20%, #EBA55D 20%, transparent 30%),
@@ -182,7 +190,7 @@ span.title {
     }
 }
 
-.btn-buble::after {
+.btn-bubble::after {
     bottom: -70%;
     background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
     radial-gradient(circle, transparent 10%, #EBA55D 15%, transparent 20%),
