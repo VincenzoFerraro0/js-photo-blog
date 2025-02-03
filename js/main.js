@@ -1,26 +1,30 @@
-const endpoint = 'https://lanciweb.github.io/demo/api/pictures/' // Dichiara la variabile con l'URL dell'API 
-const methodFetch = { method: 'GET' } // Definisce il metodo della richiesta HTTP come GET
+const endpoint = 'https://lanciweb.github.io/demo/api/pictures/' // URL dell'API contenente le immagini
+const methodFetch = { method: 'GET' } // Metodo HTTP GET per recuperare i dati dall'API
+
+// Seleziona gli elementi della modale
+const modale = document.querySelector('.modale') // Contenitore della modale
+const modaleImg = document.querySelector('.modale img') // Immagine all'interno della modale
+const btnClose = document.querySelector('#btn-close') // Bottone per chiudere la modale
 
 // Effettua una richiesta HTTP GET all'API per ottenere un elenco di immagini
 fetch(endpoint, methodFetch)
-    .then(response => response.json()) // Converte la risposta in formato JSON
-    .then(data => { // Una volta ottenuti i dati, esegue questa funzione
+    .then(response => response.json()) // Converte la risposta in JSON
+    .then(data => { // Funzione che gestisce i dati ricevuti
+        console.log(data); // Debug: stampa i dati ricevuti
 
-        console.log(data); // Stampa i dati ricevuti nella console per il debug
+        let arrayCards = [] // Array vuoto per contenere le card
 
-        let arrayCards = [] // Inizializza un array vuoto per contenere le card
-   
-        // Itera su ogni elemento (oggetto) ricevuto dall'API
+        // Cicla su ogni elemento dell'array di immagini ricevuto dall'API
         data.forEach(element => {
-            console.log(element); // Stampa l'elemento corrente nella console per il debug
+            console.log(element); // Debug: stampa l'elemento corrente
 
-            // Destructuring per estrarre le proprietà dell'oggetto
+            // Destructuring dell'oggetto ricevuto dall'API
             const { date, id, title, url } = element
 
-            // Seleziona il contenitore con id 'card-list' e aggiunge una nuova card con i dati dell'elemento
+            // Aggiunge una nuova card alla lista nel DOM
             document.querySelector('#card-list').innerHTML +=
                 `
-                <div class="cards" data-img='${id}'>
+                <div class="cards" data-id='${id}'>
                     <figure class="pin">
                         <img src="./img/pin.svg" alt="Pin">
                     </figure>
@@ -34,49 +38,41 @@ fetch(endpoint, methodFetch)
                 </div>
             `;
 
-            // Aggiorna l'array con tutte le card create
+            // Aggiorna la lista delle card
             arrayCards = document.querySelectorAll('.cards')
         });
 
-        console.log(arrayCards) // Stampa l'array delle card per il debug
+        console.log(arrayCards) // Debug: stampa l'array delle card
 
-        let modale = document.querySelector('.modale') // Seleziona l'elemento overlay
-
-        // Aggiunge un evento di click a ciascuna card
+        // Aggiunge un evento click a ciascuna card per aprire la modale
         arrayCards.forEach(element => {
             element.addEventListener('click', function () {
-                let dataImg = this.getAttribute('data-img') // Ottiene l'attributo data-img
-
-                modale.style.display = 'flex' // Mostra l'overlay
-                modale.innerHTML =
-                `
-                    <button id="btn-close" class="btn-bubble">Chiudi</button>
-                    <figure>
-                        <img src="https://marcolanci.it/boolean/assets/pictures/${dataImg}.png" alt="">
-                    </figure>
-                `
-                
-                // Aggiunge un evento per chiudere la modale con il bottone
-                let btnClose = document.querySelector('#btn-close')
-                btnClose.addEventListener('click', function () {
-                    modale.style.display = "none";
-                });
-
-                
-    
+                modale.style.display = "flex"; // Mostra la modale
+                // Imposta l'immagine nella modale con il percorso corretto
+                modaleImg.setAttribute('src', `https://marcolanci.it/boolean/assets/pictures/${element.getAttribute(`data-id`)}.png`)
             });
         });
 
+        // Evento per chiudere la modale cliccando sul bottone di chiusura
+        btnClose.addEventListener('click', function (e){
+            e.preventDefault();
+            btnClose.classList.add('animate'); // Aggiunge l'animazione al bottone
+            setTimeout(() => {
+                modale.style.display = "none"; // Nasconde la modale
+            }, 100);
 
+            setTimeout(() => {
+                btnClose.classList.remove('animate'); // Rimuove l'animazione
+            }, 200);
+        })
 
-        // Chiude la modale cliccando fuori dalla modale stessa
+        // Chiude la modale cliccando fuori dalla stessa
         window.onclick = function (event) {
             if (event.target == modale) {
-                modale.style.display = "none";
+                modale.style.display = "none"; // Nasconde la modale
             }
         }
     })
     .catch(error => {
-        // Se si verifica un errore nella richiesta, viene catturato e stampato nella console
-        console.error(error);
-    });
+        console.error(error); // Debug: stampa eventuali errori nella console
+    }); 

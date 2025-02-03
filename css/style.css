@@ -46,7 +46,7 @@ main {
     gap: 20px;
 }
 
-/* Card */
+/* Stile delle card */
 .cards {
     padding: 15px;
     background-color: white;
@@ -54,16 +54,19 @@ main {
     flex-basis: 100%;
 }
 
+/* Effetto hover sulle card */
 .cards:hover {
     cursor: pointer;
-    transform: rotate(10deg) translate(-5%);
-    scale: 1.1 ;
+    transform: rotate(10deg) translate(-5%); /* Ruota e sposta leggermente la card */
+    scale: 1.1 ;  /* Ingrandisce la card */
     box-shadow: 10px 5px 5px black;
 }
 .cards:hover span.title {
     color: black;
 }
-
+.cards:hover span.data {
+    color: black;
+}
 
 /* Pin sopra la card */
 .pin {
@@ -73,7 +76,7 @@ main {
     transform: translate(-50%);
 }
 
-/* Colonna */
+/* Colonna per contenere i dettagli */ 
 .col {
     display: flex;
     flex-direction: column;
@@ -87,8 +90,6 @@ span.title {
 }
 
 
-
-
 .data {
     font-family: 'Sometype Mono', monospace;
     color: rgb(165, 165, 165);
@@ -99,18 +100,17 @@ span.title {
 
 @keyframes slideInLeft {
     from {
-        transform: translateX(-1400px);
+        transform: translateX(-1400px);  /* Parte fuori dallo schermo a sinistra */
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(0); /* Torna alla posizione originale */
     }
 }
 
-/* OVERLAY */
+/* OVERLAY DELLA MODALE */
 .modale {
-
-    display: none;
+    display: none; /* Nascosta di default */
     position: fixed;
     z-index: 999;
     top: 0;
@@ -163,7 +163,7 @@ span.title {
     background-repeat: no-repeat;
 }
 
-.btn-bubble::before {
+.btn-bubble.animate::before {
     top: -70%;
     background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
         radial-gradient(circle, transparent 20%, #EBA55D 20%, transparent 30%),
@@ -175,7 +175,7 @@ span.title {
         radial-gradient(circle, #EBA55D 20%, transparent 20%);
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 18% 18%;
     background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 20% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-    animation: topBubbles 0.6s ease-in-out infinite;
+    animation: topBubbles 0.2s ease-in-out infinite;
 }
 
 @keyframes topBubbles {
@@ -190,7 +190,7 @@ span.title {
     }
 }
 
-.btn-bubble::after {
+.btn-bubble.animate::after {
     bottom: -70%;
     background-image: radial-gradient(circle, #EBA55D 20%, transparent 20%),
     radial-gradient(circle, transparent 10%, #EBA55D 15%, transparent 20%),
@@ -201,7 +201,7 @@ span.title {
     radial-gradient(circle, #EBA55D 20%, transparent 20%);
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
     background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0%, 85% 0%, 70% 0%, 70% 0%;
-    animation: bottomBubbles 0.6s ease-in-out infinite;
+    animation: bottomBubbles 0.2s ease-in-out infinite;
 }
 @keyframes bottomBubbles {
     50% {
